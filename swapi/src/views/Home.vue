@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <SearchArea @search-starship='searchStarship' />
+    <SearchArea @search-starship='searchStarshipText' />
 
     <div v-if="loading">
       <Loading />
@@ -8,18 +8,19 @@
 
     <div v-else>
       <StarshipList :starships='starships' />
-      <Pagination v-if="pagination" :pagination='pagination' @get-page='getPage'/>
+      <Pagination v-if="pagination" :pagination='pagination' @get-page='getPageData'/>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 // @ is an alias to /src
 import SearchArea from '@/components/SearchArea.vue'
 import StarshipList from '@/components/StarshipList.vue'
 import Pagination from '@/components/Pagination.vue'
 import Loading from '@/components/TheLoading.vue'
+
+import { searchStarship, fetchStarshipData, getPage } from '../services/index';
 
 export default {
   name: 'Home',
@@ -37,46 +38,27 @@ export default {
     }
   },
   methods: {
-    searchStarship(searchText) {
-      this.loading= true;
+    async setData(dataFunction, ...arg) {
+        this.loading = true;
 
-      axios
-      .get(`https://swapi.dev/api/starships/?search=${searchText}`)
-      .then(response => {
-        const { count, next, previous, results } = response.data;
+        const starShipData = await dataFunction(arg);
 
+        console.log(starShipData);
+
+        const { count, next, previous, results } = starShipData;
         this.starships = results;
-        this.pagination = { count, next, previous}
-        this.loading= false;
-      })
-    },
+        this.pagination = { count, next, previous }
 
+        this.loading = false;
+    }, 
     fetchStarshipData() {
-      this.loading= true;
-
-      axios
-      .get('https://swapi.dev/api/starships/')
-      .then(response => {
-        const { count, next, previous, results } = response.data;
-
-        this.starships = results;
-        this.pagination = { count, next, previous}
-        this.loading= false;
-      })
+        this.setData(fetchStarshipData);
     },
-
-    getPage(url) {
-      this.loading= true;
-
-      axios
-      .get(url)
-      .then(response => {   
-        const { count, next, previous, results } = response.data;
-
-        this.starships = results;
-        this.pagination = { count, next, previous}
-        this.loading= false;
-      })
+    searchStarshipText(searchText) {
+        this.setData(searchStarship, searchText);
+    },
+    getPageData(url) {
+        this.setData(getPage, url);
     }
   },
 

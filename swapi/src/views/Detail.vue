@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Loading from '@/components/TheLoading.vue';
+import { fetchSingleStarshipData } from '../services/index';
 
 export default {
   name: 'Detail',
@@ -27,16 +27,14 @@ export default {
     }
   },
   methods: {
-    fetchSingleStarshipData(id) {
-      this.loading= true;
 
-      axios
-      .get(`https://swapi.dev/api/starships/${id}`)
-      .then(response => {
-        console.log(response.data)
-        this.starship = response.data;
-        this.loading= false;
-      })
+    async fetchSingleStarshipData(id) {
+        this.loading = true;
+
+        const fetchSingleStarshipDataWithId = await fetchSingleStarshipData(id);
+        this.starship = fetchSingleStarshipDataWithId;
+
+        this.loading = false;
     }
   },
   created() {
