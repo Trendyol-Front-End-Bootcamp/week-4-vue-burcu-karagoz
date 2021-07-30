@@ -91,6 +91,12 @@ export default {
       }
   
       .starship-info {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 100px;
 
         h1 {
           color: #fce854;
