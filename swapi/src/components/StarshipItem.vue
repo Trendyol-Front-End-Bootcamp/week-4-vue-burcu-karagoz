@@ -26,11 +26,12 @@
 
     .starship-item {
         border: 1px solid #fce854;
-        box-shadow: 0px 0px 6px #fce854;
+        border-radius: 6px;
         background-color: #030303;
         width: 100%;
         height: 100%;
         min-width: 255px;
+        transition: transform 1s;
 
         .img-container {
             position: relative;
@@ -43,6 +44,8 @@
                 right: 0;
                 width: 100%;
                 height: 100%;
+                border-radius: 6px;
+
 
                 &:last-child {
                     opacity: 1;
@@ -79,8 +82,9 @@
         }
 
         &:hover {
-            box-shadow: 0px 0px 25px #778aa4;
+            box-shadow: 0px 0px 15px #778aa4;
             border: 1px solid #778aa4;
+            transform: translate(0, -10px);
 
             .starship-img:last-child {
                 opacity: 0;

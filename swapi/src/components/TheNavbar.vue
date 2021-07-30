@@ -1,5 +1,7 @@
 <template>
-    <header>navbar</header>
+    <header>
+        <img class="star-wars-logo" src="../assets/img/header-logo.png" width="400" />
+    </header>
 </template>
 
 <script>
@@ -10,6 +12,6 @@
 
 <style lang="scss" scoped>
     header {
-        border: 1px solid blue;
+        padding: 40px 0;
     }
 </style>
