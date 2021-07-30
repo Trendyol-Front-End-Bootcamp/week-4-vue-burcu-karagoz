@@ -39,17 +39,21 @@ export default {
   },
   methods: {
     async setData(dataFunction, ...arg) {
+      try {
         this.loading = true;
 
         const starShipData = await dataFunction(arg);
-
-        console.log(starShipData);
-
+        
         const { count, next, previous, results } = starShipData;
+        
         this.starships = results;
         this.pagination = { count, next, previous }
 
         this.loading = false;
+
+      } catch(error) {
+        throw new Error(error.message);
+      }
     }, 
     fetchStarshipData() {
         this.setData(fetchStarshipData);

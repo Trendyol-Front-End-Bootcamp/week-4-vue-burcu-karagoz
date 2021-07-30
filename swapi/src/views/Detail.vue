@@ -27,14 +27,18 @@ export default {
     }
   },
   methods: {
-
     async fetchSingleStarshipData(id) {
+      try {
         this.loading = true;
 
         const fetchSingleStarshipDataWithId = await fetchSingleStarshipData(id);
         this.starship = fetchSingleStarshipDataWithId;
 
         this.loading = false;
+
+      } catch(error) {
+        console.log(error.name, error.message);
+      }
     }
   },
   created() {

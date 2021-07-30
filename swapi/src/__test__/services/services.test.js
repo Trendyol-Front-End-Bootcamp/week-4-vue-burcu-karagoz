@@ -5,6 +5,7 @@ import { fetchStarshipData, fetchSingleStarshipData, getPage, searchStarship } f
 jest.mock("axios");
 
 describe("Services", () => {
+
     axios.get.mockImplementation(() => {
         return Promise.resolve({
             data: {
@@ -55,6 +56,13 @@ describe("Services", () => {
 
             expect(data.results).toHaveLength(2);
         });
+
+        it("should return error message when data not arrived", async () => {
+            axios.get.mockImplementationOnce(() => {
+                return Promise.reject("network error");
+            });
+            expect(await fetchStarshipData()).toBe("network error");
+        });
     });
 
     describe("getPage", () => {
@@ -79,9 +87,16 @@ describe("Services", () => {
                 }
             );
         });
+
+        it("should return error message when data not arrived", async () => {
+            axios.get.mockImplementationOnce(() => {
+                return Promise.reject("network error");
+            });
+            expect(await getPage()).toBe("network error");
+        });
     });
 
-    describe("searchStarships", () => {
+    describe("searchStarship", () => {
         it("should returns starships", async () => {
             expect(await searchStarship()).toEqual(
                 {
@@ -102,6 +117,13 @@ describe("Services", () => {
                     ]
                 }
             );
+        });
+
+        it("should return error message when data not arrived", async () => {
+            axios.get.mockImplementationOnce(() => {
+                return Promise.reject("network error");
+            });
+            expect(await searchStarship()).toBe("network error");
         });
     });
 
@@ -127,5 +149,13 @@ describe("Services", () => {
                 }
             );
         });
+
+        it("should return error message when data not arrived", async () => {
+            axios.get.mockImplementationOnce(() => {
+                return Promise.reject("network error");
+            });
+            expect(await fetchSingleStarshipData()).toBe("network error");
+        });
     });
 });
+
