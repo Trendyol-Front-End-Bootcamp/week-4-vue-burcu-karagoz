@@ -14,12 +14,42 @@
 </script>
 
 <style lang="scss">
+@font-face {
+  font-family: "StarWars";
+  src: local("StarWars"), url(assets/fonts/STARWARS.otf) format("truetype");
+}
+
+* {
+  font-family: "StarWars";
+}
+
+body {
+  background: #000000 url("./assets/img/background-img.jpeg");
+    // background: #000000 url("https://fwbmatch.fra1.digitaloceanspaces.com/starwars/star-wars-bg-01.jpg");
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+h3 {
+  margin: 0;
 }
 
 #nav {
