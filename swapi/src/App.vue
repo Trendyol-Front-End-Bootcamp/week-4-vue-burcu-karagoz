@@ -25,6 +25,7 @@
 
 body {
   background: #000000 url("./assets/img/background-img.jpeg");
+  margin: 0;
     // background: #000000 url("https://fwbmatch.fra1.digitaloceanspaces.com/starwars/star-wars-bg-01.jpg");
 }
 
@@ -50,6 +51,12 @@ a {
 
 h3 {
   margin: 0;
+}
+
+button {
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 #nav {
