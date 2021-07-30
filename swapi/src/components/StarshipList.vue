@@ -1,5 +1,5 @@
 <template>
-    <ul class="list-container">
+    <ul class="starship-list">
         <StarshipItem 
             v-for="(starship, index) in starships" 
             :key="index" 
@@ -22,5 +22,10 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .starship-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 60px;
+    }
 </style>
