@@ -57,6 +57,7 @@ button {
   text-decoration: none;
   font-size: 18px;
   cursor: pointer;
+  text-align: center;
 }
 
 #nav {

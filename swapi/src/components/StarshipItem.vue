@@ -26,7 +26,7 @@
 
     .starship-item {
         border: 1px solid #fce854;
-        border-radius: 6px;
+        border-radius: 8px;
         background-color: #030303;
         width: 100%;
         height: 100%;
@@ -44,7 +44,7 @@
                 right: 0;
                 width: 100%;
                 height: 100%;
-                border-radius: 6px;
+                border-radius: 8px;
 
 
                 &:last-child {
