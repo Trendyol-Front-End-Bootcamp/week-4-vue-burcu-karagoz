@@ -1,16 +1,16 @@
 <template>
   <div>
     <Navbar />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-  import Navbar from '@/components/TheNavbar.vue'
+import Navbar from "@/components/TheNavbar.vue";
 
-  export default {
-    components: { Navbar }
-  }
+export default {
+  components: { Navbar },
+};
 </script>
 
 <style lang="scss">
@@ -26,7 +26,7 @@
 body {
   background: #000000 url("./assets/img/background-img.jpeg");
   margin: 0;
-    // background: #000000 url("https://fwbmatch.fra1.digitaloceanspaces.com/starwars/star-wars-bg-01.jpg");
+  // background: #000000 url("https://fwbmatch.fra1.digitaloceanspaces.com/starwars/star-wars-bg-01.jpg");
 }
 
 #app {
