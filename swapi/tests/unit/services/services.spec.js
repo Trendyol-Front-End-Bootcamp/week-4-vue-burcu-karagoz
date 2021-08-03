@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-import { fetchStarshipData, fetchSingleStarshipData, getPage, searchStarship } from "../../services/index";
+import { fetchStarshipData, fetchSingleStarshipData, getPage, searchStarship } from "../../../src/services/index";
 
 jest.mock("axios");
 
 describe("Services", () => {
-
   axios.get.mockImplementation(() => {
     return Promise.resolve({
       data: {
