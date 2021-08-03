@@ -7,12 +7,17 @@
     </div>
 
     <div v-else>
-      <StarshipList :starships="starships" />
-      <Pagination
-        v-if="pagination"
-        :pagination="pagination"
-        @get-page="getPageData"
-      />
+      <div v-if="this.starships.length == 0">
+        <NoResult />
+      </div>
+      <div v-else>
+        <StarshipList :starships="starships" />
+        <Pagination
+          v-if="pagination"
+          :pagination="pagination"
+          @get-page="getPageData"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +28,7 @@ import SearchArea from "@/components/SearchArea.vue";
 import StarshipList from "@/components/StarshipList.vue";
 import Pagination from "@/components/Pagination.vue";
 import Loading from "@/components/TheLoading.vue";
+import NoResult from "@/components/NoResult.vue";
 
 import { searchStarship, fetchStarshipData, getPage } from "../services/index";
 
@@ -33,6 +39,7 @@ export default {
     StarshipList,
     Pagination,
     Loading,
+    NoResult,
   },
 
   data() {
