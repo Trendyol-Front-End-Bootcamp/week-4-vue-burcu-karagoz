@@ -6,6 +6,9 @@
       v-model="searchText"
       class="search-input"
     />
+    <div v-if="searchText != ''">
+      <button class="reset-btn" @click="resetInput">Clear</button>
+    </div>
     <button class="search-btn">Search</button>
   </form>
 </template>
@@ -23,6 +26,10 @@ export default {
   methods: {
     onSubmit() {
       this.$emit("search-starship", this.searchText);
+    },
+    resetInput() {
+      this.searchText = "";
+      this.onSubmit();
     },
   },
 };
@@ -57,13 +64,13 @@ form {
     }
   }
 
-  .search-btn {
+  .search-btn,
+  .reset-btn {
     background-color: #fce854;
     border: none;
     color: #000;
     padding: 15px 32px;
     text-align: center;
-    margin: 4px 2px;
     border-radius: 8px;
   }
 }
